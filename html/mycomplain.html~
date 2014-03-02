@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Helios 1.5 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>BeHeard - AllComplaints</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.dropotron.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/skel-panels.min.js"></script>
+		<script src="/js/init.js"></script>
+		
+		<noscript>
+			<link rel="stylesheet" href="/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/css/style.css" />
+			<link rel="stylesheet" href="/css/style-desktop.css" />
+			<link rel="stylesheet" href="/css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+		
+		
+	</head>
+	<body class="left-sidebar">
+
+		<!-- Header -->
+			<div id="header">
+
+				<!-- Inner -->
+					<div class="inner">
+						<header>
+							<h1><a href="#" id="logo">My Complaints</a></h1>
+						</header>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="/index" class="myButton">Home</a></li>
+							<li>
+								<a class="myButton"><span>Categories</span></a>
+								<ul>
+
+
+									 <li ><a href="/category/0">Water</a></li>
+                                     <li ><a href="/category/1">Electricity</a></li>
+                                     <li ><a href="/category/2">Transportation</a></li>
+                                     <li ><a href="/category/3">Telecom</a></li>
+                                     <li ><a href="/category/4">Sanitation</a></li>
+                                     <li ><a href="/category/5">See All</a></li>
+								
+								</ul>	
+							</li>
+							<li><a href="/allcomplain" class="myButton">All Complaints</a></li>
+							<!--li><a href="right-sidebar.html" class ="myButton">Right Sidebar</a></li-->
+							<li><a href="/complainit" class="myButton">Add Complain</a></li>
+							<li><a href="/comp_follow" class="myButton">Profile</a></li>
+						</ul>
+					</nav>
+
+			</div>
+			
+		<!-- Main -->
+						
+			
+			<div class="wrapper style1">
+
+
+					<div class="container">
+					<div class="row">
+					
+					{% for i in  result %}
+						
+						<article class="4u special">
+						<table>
+						
+												
+							<a href="/viewit/{{i.key()}}"><img src='imagehandler2?key={{i.key()}}' alt="ProfilePic" style="height:300px; width:400px"></img></a>
+						
+						<tr>
+						<td>
+							<header>
+								<h3><a href="#">{{i.cname}}</a></h3>
+							</header>
+						
+						</td>
+						<tr>
+						<td>
+						</td>
+						</tr>
+						<tr><td>	{{numberit[loop.index-1]}}
+						</td>
+						<td>
+						
+						
+							{% if likeit[loop.index-1] == 1 %}		
+							<form method="post" action="/dislike1/{{i.key()}}"> 
+								<button type="submit">Liked</button>
+							</form>
+							{% else %}
+							
+							<form method="post" action="/liked1/{{i.key()}}"> 
+								<button type="submit">Like</button>
+							</form>
+							{% endif %}
+						</td>	
+						
+						<td>
+							{% if followit[loop.index-1] == 1 %}
+							<form method="post" action="/unfollowit1/{{i.key()}}"> 
+								<button type="submit">Un-Follow</button>
+							</form>
+							{% else %}
+							<form method="post" action="/followit1/{{i.key()}}"> 
+								<button type="submit">Follow</button>
+							</form>
+							{% endif %}
+						</td>
+						</tr>
+						<tr><td>	<ul class="social_buttons thumbsocial social-icons-footer-bottom">
+				<table> <tr><td>
+								<li class="gplus"><a target="_blank" data-toggle="tooltip" title="Share on Google+" data-placement="top" href="https://plus.google.com/share?url=http://test-ak5.appspot.com/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-google-plus"></i></a></li></td>
+																       							<td><li class="facebook"><a target="_blank" data-toggle="tooltip" title="Share on Facebook" data-placement="top" href="http://www.facebook.com/sharer.php?u=http://test-ak5.appspot.com/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-facebook"></i> </a></li></td>
+																									       							                      <td> <li class="twitter"><a  target="_blank" data-toggle="tooltip" title="Share on Twitter" data-placement="top" href="http://twitter.com/share?url=http://test-ak5.appspot.com/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-twitter"></i></a></li></td></tr>	
+</table>
+																																		       							                    </ul>
+						</td></tr>
+						</table>
+						</article>
+							
+					{% endfor %}
+					</div>
+					
+					</div>
+				</div>
+
+			</div>
+	
+	
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Helios 1.5 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{{obj.cname}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.dropotron.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/skel-panels.min.js"></script>
+		<script src="/js/init.js"></script>
+		
+			<link rel="stylesheet" href="/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/css/style.css" />
+			<link rel="stylesheet" href="/css/style-desktop.css" />
+			<link rel="stylesheet" href="/css/style-noscript.css" />
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+	</head>
+	<body class="no-sidebar">
+
+		<!-- Header -->
+			<div id="header">
+
+				<!-- Inner -->
+					<div class="inner">
+						<header>
+							<h1><a href="#" id="logo">View Complaint</a></h1>
+						</header>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="/index" class="myButton">Home</a></li>
+							<li>
+								<a class="myButton"><span>Categories</span></a>
+								<ul>
+
+
+									 <li ><a href="/category/0">Water</a></li>
+                                     <li ><a href="/category/1">Electricity</a></li>
+                                     <li ><a href="/category/2">Transportation</a></li>
+                                     <li ><a href="/category/3">Telecom</a></li>
+                                     <li ><a href="/category/4">Sanitation</a></li>
+                                     <li ><a href="/category/5">See All</a></li>
+								
+								</ul>	
+							</li>
+							<li><a href="/allcomplain" class="myButton">All Complaints</a></li>
+							<!--li><a href="right-sidebar.html" class ="myButton">Right Sidebar</a></li-->
+							<li><a href="/complainit" class="myButton">Add Complain</a></li>
+							<li><a href="/comp_follow" class="myButton">Profile</a></li>
+						</ul>
+					</nav>
+
+			</div>
+			
+		<!-- Main -->
+			<div class="wrapper style1">
+
+				<div class="container">
+					<div class="row">
+						<div class="12u skel-cell-important" id="content">
+							<article id="main" class="special">
+								<center><img src='/imagehandler2?key={{obj.key()}}' alt="ProfilePic" style="height:500px;width:500px;"></img>
+<br/>
+		
+		{{ cntlike }} Supporters
+				<br/>
+		
+		{{obj.address}}<br/>
+		
+		{{obj.contact}}<br/>
+		{% if likeit == 1 %}		
+			<form method="post" action="/dislike4/{{obj.key()}}"> 
+				<button type="submit">Supported</button>
+			</form>
+		{% else %}	
+			<form method="post" action="/liked4/{{obj.key()}}"> 
+				<button type="submit">Support</button>
+			</form>
+		{% endif %}
+		{% if followit == 1 %}
+			<form method="post" action="/unfollowit4/{{obj.key()}}"> 
+				<button type="submit">Un-Follow</button>
+			</form>
+		{% else %}
+			<form method="post" action="/followit4/{{obj.key()}}"> 
+				<button type="submit">Follow</button>
+			</form>
+		{% endif %}
+</center>
+								
+								
+								<section>
+									<header>
+										<h3>{{obj.cname}}</h3>
+										by {{obj.cuser}}
+										<br/>
+									</header>
+									<p>
+										{{obj.desc}}
+									</p>
+								</section>
+							</article>
+						</div>
+					</div>
+					
+			<ul class="social_buttons thumbsocial social-icons-footer-bottom">
+			<br/>
+				<table style="width:30%;"> 
+				<tr>
+				<td style="width:33%;">
+								<li class="gplus"><a target="_blank" data-toggle="tooltip" title="Share on Google+" data-placement="top" href="https://plus.google.com/share?url=http://test-ak5.appspot.com/viewit/{{obj.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-google-plus"></i></a></li></td>
+																       							<td style="width:33%;"><li class="facebook"><a target="_blank" data-toggle="tooltip" title="Share on Facebook" data-placement="top" href="http://www.facebook.com/sharer.php?u=http://test-ak5.appspot.com/viewit/{{obj.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-facebook"></i> </a></li></td>
+																									       							                      <td style="width:34%;"> <li class="twitter"><a  target="_blank" data-toggle="tooltip" title="Share on Twitter" data-placement="top" href="http://twitter.com/share?url=http://test-ak5.appspot.com/viewit/{{obj.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-twitter"></i></a></li></td></tr>	
+</table>
+																																		       							                    </ul>
+<hr />
+					{% for comm in commentit %}
+					<p style="background-color: #7BCDC8;
+    border-color: #00A99D;font-size: 0.85rem;
+    padding: 0.75rem 1.5rem;"><b><i>{{comm.puser}}</i></b> says {{ comm.comment }}<br/></p>
+					{% endfor %}
+					<form method="post" action="/addcomment/{{obj.key()}}">
+					<textarea rows="4" cols="50" name="comment" placeholder="Your views go here.."></textarea>
+					<button type="submit" style="background: none repeat scroll 0 0 #60D7A9;
+	    border: 0 none;
+	        color: #FFFFFF;
+		    display: block;
+		        padding: 10px 15px;
+			    text-decoration: none;
+			        text-transform: uppercase;
+				    transition: background 0.3s ease-in-out 0s;
+				        width: 140px;" class="btn btn-primary">Submit</button>
+					</form>
+					
+
+				</div>
+
+			</div>
+
+	</body>
+</html>

@@ -1,0 +1,36 @@
+#result div{
+		border: 10px solid #EEEEEE;
+    		float: left;
+    		height: 300px;
+    		margin: 20px;
+    outline: 1px solid #CFCFCF;
+    width: 300px;
+		
+	    }
+	    #more{
+		background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #CFCFCF;
+    color: #000000;
+    display: none;
+    font-weight: bold;
+    left: 1100px;
+    padding: 5px;
+    position: fixed;
+    top: 100px;
+
+	    }
+	    #no-more{
+		background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #CFCFCF;
+    color: #000000;
+    display: none;
+    font-weight: bold;
+    left: 1100px;
+    padding: 5px;
+    position: fixed;
+    top: 100px;
+
+	    }
+	    #result{
+		
+	    }

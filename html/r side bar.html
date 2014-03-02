@@ -1,0 +1,23 @@
+<html>
+<body>
+	{% for i in  result %}
+		<a href='/viewit/{{i.key()}}'><img src='/imagehandler2?key={{i.key()}}' alt="ProfilePic" style="height:100px;width:100px;"></img></a>
+		<br/>
+		{{i.desc}} 
+		<br/>
+		{{i.address}}
+		<br/>
+		{{ numberit[loop.index-1] }}
+		<p> number of likes </p>
+		{% if likeit[loop.index-1]==1 %}
+		<form method="post" action="/dislike2/{{i.key()}}/{{fl}}">
+			<button type="submit">Liked</button>
+		</form>
+		{% else %}
+		<form method="post" action="/liked2/{{i.key()}}/{{fl}}">
+			<button type="submit">Like</button>
+		</form>
+		{% endif %}
+	{% endfor %}
+</body>
+</html>

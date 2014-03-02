@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<img src='/imagehandler2?key={{obj.key()}}' alt="ProfilePic" style="height:100px;width:100px;"></img>
+		<br/>
+		{{obj.desc}}
+		<br/>
+		{{ cntlike }}
+		Number of likes<br/>
+		{{obj.address}}<br/>
+		{{obj.contact}}<br/>
+		{% for comm in commentit %}
+			<b><i>{{comm.puser}}</i></b> says {{ comm.comment }}<br/>
+		{% endfor %}
+		<form method="post" action="/addcomment/{{obj.key()}}">
+			<textarea rows="4" cols="50" name="comment">Enter text here...</textarea>
+			<button type="submit">Submit</button>
+		</form>
+	</body>
+</html>

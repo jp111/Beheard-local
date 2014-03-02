@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>BeHeard - AllComplaints</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+		<link  rel="stylesheet" href="/css/browse.css" type="text/css" />
+		<link  rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.dropotron.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/skel-panels.min.js"></script>
+		<script src="/js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/css/style.css" />
+			<link rel="stylesheet" href="/css/style-desktop.css" />
+			<link rel="stylesheet" href="/css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="csallcomplains/ie8.css" /><![endif]-->
+	</head>
+
+<body>
+	{% for i in  result %}
+		<a href='/viewit/{{i.key()}}'><img src='imagehandler2?key={{i.key()}}' alt="ProfilePic" style="height:100px;width:100px;"></img></a>
+		<br/>
+		{{i.desc}} 
+		<br/>
+		{{i.address}}
+		<br/>
+		{{ numberit[loop.index-1] }}
+		number of likes
+		{% if likeit[loop.index-1]==1 %}
+		<form method="post" action="/dislike3/{{i.key()}}">
+			<button type="submit">Liked</button>
+		</form>
+		{% else %}
+		<form method="post" action="/liked3/{{i.key()}}">
+			<button type="submit">Like</button>
+		</form>
+		{% endif %}
+		{% if followit[loop.index-1] == 1 %}
+			<form method="post" action="/unfollowit3/{{i.key()}}"> 
+				<button type="submit">Followed</button>
+			</form>
+		{% else %}
+			<form method="post" action="/followit3/{{i.key()}}"> 
+				<button type="submit">Follow</button>
+			</form>
+		{% endif %}
+		<ul class="social_buttons thumbsocial social-icons-footer-bottom">
+								<li class="gplus"><a target="_blank" data-toggle="tooltip" title="Share on Google+" data-placement="top" href="https://plus.google.com/share?url=localhost:8090/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-google-plus"></i></a></li>
+																       							                       <li class="facebook"><a target="_blank" data-toggle="tooltip" title="Share on Facebook" data-placement="top" href="http://www.facebook.com/sharer.php?u=localhost:8090/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-facebook"></i> </a></li>
+																									       							                       <li class="twitter"><a  target="_blank" data-toggle="tooltip" title="Share on Twitter" data-placement="top" href="http://twitter.com/share?url=localhost:8090/viewit/{{i.key()}}" catid="5187135082594304" style="cursor: pointer;" ><i class="fa fa-twitter"></i></a></li>
+																																		       							                    </ul>
+	{% endfor %}
+</body>
+</html>
